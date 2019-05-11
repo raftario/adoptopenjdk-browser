@@ -97,7 +97,7 @@ class App extends React.Component {
           handleFilters={this.handleFilters}
           handleSearch={this.handleSearch}
         />
-        <Table releases={this.state.results}/>
+        <Table releases={this.state.results} search={this.state.search}/>
       </>
     )
   }

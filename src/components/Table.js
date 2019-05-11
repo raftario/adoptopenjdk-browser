@@ -186,7 +186,16 @@ function AOJDKVirtualizedTable (props) {
   let i = 0
 
   if (props.releases.length) props.releases.forEach(r => {
-    r.binaries.forEach(b => {
+    let search
+    try {
+      search = RegExp(props.search)
+    } catch(err) {
+      search = props.search
+    }
+    if (
+      (search instanceof RegExp && search.test(r['release_name'])) ||
+      (typeof search === 'string' && r['release_name'].includes(search))
+    ) r.binaries.forEach(b => {
       rows.push({
         id: i,
         name: r['release_name'],
@@ -246,7 +255,8 @@ function AOJDKVirtualizedTable (props) {
 }
 
 AOJDKVirtualizedTable.propTypes = {
-  releases: PropTypes.arrayOf(PropTypes.object).isRequired
+  releases: PropTypes.arrayOf(PropTypes.object).isRequired,
+  search: PropTypes.string.isRequired
 }
 
 export default AOJDKVirtualizedTable
