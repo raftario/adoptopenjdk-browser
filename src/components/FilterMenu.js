@@ -79,6 +79,7 @@ FilterMenu.propTypes = {
   collapseTitle: PropTypes.string.isRequired,
   collapseIcon: PropTypes.node.isRequired,
   filters: PropTypes.shape({
+    version: PropTypes.arrayOf(PropTypes.string),
     os: PropTypes.arrayOf(PropTypes.string),
     arch: PropTypes.arrayOf(PropTypes.string),
     type: PropTypes.arrayOf(PropTypes.string),

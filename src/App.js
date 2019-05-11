@@ -13,6 +13,7 @@ class App extends React.Component {
 
     this.state = {
       filters: {
+        version: ['any'],
         os: [os],
         arch: ['any'],
         type: ['any'],
@@ -21,16 +22,11 @@ class App extends React.Component {
         release: ['latest']
       },
       search: '',
-      url: 'https://api.adoptopenjdk.net/v2/info/releases/openjdk8',
+      urls: ['https://api.adoptopenjdk.net/v2/info/releases/openjdk8'],
       results: []
     }
 
-    fetch(this.state.url)
-      .then(res => res.json())
-      .then(json => {
-        if (!Array.isArray(json)) json = [json]
-        this.setState({ results: json })
-      })
+    this.componentWillUpdate({}, this.state, {})
   }
 
   handleFilters = (cid, fid) => {
@@ -39,19 +35,12 @@ class App extends React.Component {
     const anyIndex = newFilters[fid].indexOf('any')
 
     if (index === -1) {
-      if (cid === 'any') {
-        newFilters[fid].length = 0
-      } else if (anyIndex !== -1) {
-        newFilters[fid].splice(anyIndex, 1)
-      }
+      if (cid === 'any') newFilters[fid].length = 0
+      else if (anyIndex !== -1) newFilters[fid].splice(anyIndex, 1)
       newFilters[fid].push(cid)
-    } else {
-      newFilters[fid].splice(index, 1)
-    }
+    } else newFilters[fid].splice(index, 1)
 
-    if (!newFilters[fid].length) {
-      newFilters[fid].push('any')
-    }
+    if (!newFilters[fid].length) newFilters[fid].push('any')
 
     this.setState({ filters: newFilters })
   }
@@ -61,25 +50,42 @@ class App extends React.Component {
   }
 
   componentWillUpdate (nextProps, nextState, nextContext) {
-    let url = 'https://api.adoptopenjdk.net/v2/info/releases/openjdk'
-    url += '8?'
+    const url = 'https://api.adoptopenjdk.net/v2/info/releases/openjdk'
+    const urls = []
+    const versions = this.state.filters.version[0] === 'any'
+      ? [8, 9, 10, 11, 12]
+      : this.state.filters.version.map(v => Number(v.split(' ')[1]))
 
-    const applyFilter = f => {
-      return this.state.filters[f][0] === 'any'
-        ? url
-        : url + f + '=' + this.state.filters[f][0] + '&'
+    versions.forEach(v => urls.push(url + v + '?'))
+
+    const applyFilter = (f, u) => {
+      return this.state.filters[f][0] === 'any' || f === 'version'
+        ? u
+        : u + f + '=' + this.state.filters[f][0] + '&'
     }
 
-    Object.keys(this.state.filters).forEach(f => {url = applyFilter(f)})
+    let i = 0
+    let results = []
 
-    if (url !== this.state.url && url !== nextState.url) {
-      fetch(url)
-        .then(res => res.json())
-        .then(json => {
-          if (!Array.isArray(json)) json = [json]
-          this.setState({ results: json, url: url })
-        })
-    }
+    urls.forEach((u, index) => {
+      Object.keys(this.state.filters).forEach(f => {u = applyFilter(f, u)})
+      urls[index] = u
+
+      if (
+        (this.state.urls.indexOf(u) === -1 && nextState.urls.indexOf(u) === -1) ||
+        (this.state.urls.length !== urls.length && nextState.urls.length !== urls.length)
+      ) {
+        fetch(u)
+          .then(res => res.json())
+          .then(json => {
+            if (!Array.isArray(json)) json = [json]
+            results = results.concat(json)
+            i++
+            if (i === urls.length) this.setState({ results, urls })
+          })
+          .catch(() => this.setState({ results, urls }))
+      }
+    })
   }
 
   render () {

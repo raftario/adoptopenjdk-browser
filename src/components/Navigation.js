@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import HSIcon from '@material-ui/icons/BarChart'
 import ImplIcon from '@material-ui/icons/Build'
 import TypeIcon from '@material-ui/icons/Code'
+import VersionIcon from '@material-ui/icons/Bookmark'
 import OSIcon from '@material-ui/icons/Computer'
 import ReleaseIcon from '@material-ui/icons/Label'
 import ArchIcon from '@material-ui/icons/Memory'
@@ -108,16 +109,23 @@ function Navigation (props) {
       <div className={classes.toolbar}/>
       <Divider/>
       <List>
+        <FilterMenu collapseTitle="Version"
+                    collapseIcon={<VersionIcon/>}
+                    filterItems={['OpenJDK 8 (LTS)', 'OpenJDK 9', 'OpenJDK 10', 'OpenJDK 11 (LTS)', 'OpenJDK 12 (Latest)']}
+                    filters={props.filters}
+                    filterId={'version'}
+                    handleFilters={props.handleFilters}
+        />
         <FilterMenu collapseTitle="OS"
                     collapseIcon={<OSIcon/>}
-                    filterItems={['Windows', 'Linux', 'Mac']}
+                    filterItems={['Windows', 'Linux', 'Mac', 'AIX', 'Solaris']}
                     filters={props.filters}
                     filterId={'os'}
                     handleFilters={props.handleFilters}
         />
         <FilterMenu collapseTitle="Architecture"
                     collapseIcon={<ArchIcon/>}
-                    filterItems={['x64', 'x32', 'ppc64', 's390x', 'ppc64le', 'aarch64']}
+                    filterItems={['x64', 'x32', 'ppc64', 's390x', 'ppc64le', 'aarch64', 'sparcv9']}
                     filters={props.filters}
                     filterId={'arch'}
                     handleFilters={props.handleFilters}
@@ -223,6 +231,7 @@ function Navigation (props) {
 
 Navigation.propTypes = {
   filters: PropTypes.shape({
+    version: PropTypes.arrayOf(PropTypes.string),
     os: PropTypes.arrayOf(PropTypes.string),
     arch: PropTypes.arrayOf(PropTypes.string),
     type: PropTypes.arrayOf(PropTypes.string),
