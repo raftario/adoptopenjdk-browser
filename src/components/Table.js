@@ -180,6 +180,9 @@ function formatImpl (s) {
 }
 
 function AOJDKVirtualizedTable (props) {
+  const [sortBy, setSortBy] = React.useState('name')
+  const [sortDirection, setSortDirection] = React.useState(SortDirection.DESC)
+
   const classes = useStyles()
 
   const rows = []
@@ -189,7 +192,7 @@ function AOJDKVirtualizedTable (props) {
     let search
     try {
       search = RegExp(props.search)
-    } catch(err) {
+    } catch (err) {
       search = props.search
     }
     if (
@@ -209,6 +212,12 @@ function AOJDKVirtualizedTable (props) {
     })
   })
 
+  rows.sort((a, b) =>
+    sortDirection === SortDirection.ASC
+      ? a[sortBy] > b[sortBy] ? 1 : -1
+      : b[sortBy] > a[sortBy] ? 1 : -1
+  )
+
   return (
     <main className={classes.content}>
       <div className={classes.toolbar}/>
@@ -218,37 +227,43 @@ function AOJDKVirtualizedTable (props) {
         onRowClick={event => console.log(event)}
         columns={[
           {
-            width: 240,
+            width: 300,
             flexGrow: 1.0,
             label: 'Name',
             dataKey: 'name',
           },
           {
-            width: 120,
+            width: 150,
             label: 'OS',
             dataKey: 'os',
           },
           {
-            width: 120,
+            width: 150,
             label: 'Architecture',
             dataKey: 'arch',
           },
           {
-            width: 120,
+            width: 150,
             label: 'Binary Type',
             dataKey: 'type',
           },
           {
-            width: 120,
+            width: 150,
             label: 'OpenJDK Implementation',
             dataKey: 'openjdk_impl',
           },
           {
-            width: 120,
+            width: 150,
             label: 'Heap Size',
             dataKey: 'heap_size',
           }
         ]}
+        sortBy={sortBy}
+        sortDirection={sortDirection}
+        sort={({ sortBy, sortDirection }) => {
+          setSortBy(sortBy)
+          setSortDirection(sortDirection)
+        }}
       />
     </main>
   )
