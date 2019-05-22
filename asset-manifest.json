@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/adoptopenjdk-browser/static/js/main.cc68ed3d.chunk.js",
-    "main.js.map": "/adoptopenjdk-browser/static/js/main.cc68ed3d.chunk.js.map",
+    "main.js": "/adoptopenjdk-browser/static/js/main.13fd7f3c.chunk.js",
+    "main.js.map": "/adoptopenjdk-browser/static/js/main.13fd7f3c.chunk.js.map",
     "runtime~main.js": "/adoptopenjdk-browser/static/js/runtime~main.1f5200f7.js",
     "runtime~main.js.map": "/adoptopenjdk-browser/static/js/runtime~main.1f5200f7.js.map",
     "static/js/2.d2a134d2.chunk.js": "/adoptopenjdk-browser/static/js/2.d2a134d2.chunk.js",
     "static/js/2.d2a134d2.chunk.js.map": "/adoptopenjdk-browser/static/js/2.d2a134d2.chunk.js.map",
     "index.html": "/adoptopenjdk-browser/index.html",
-    "precache-manifest.5f077eaf221477f3b9085c9af19ea887.js": "/adoptopenjdk-browser/precache-manifest.5f077eaf221477f3b9085c9af19ea887.js",
+    "precache-manifest.446832ba6856c5aa7f34a8ac28b9790e.js": "/adoptopenjdk-browser/precache-manifest.446832ba6856c5aa7f34a8ac28b9790e.js",
     "service-worker.js": "/adoptopenjdk-browser/service-worker.js"
   }
 }
