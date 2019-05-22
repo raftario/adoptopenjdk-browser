@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7a583a4b804db07dbd12ac8b4d2101c6",
+    "revision": "22208d41aa00431ead783fb69d935874",
     "url": "/adoptopenjdk-browser/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/adoptopenjdk-browser/static/js/2.d2a134d2.chunk.js"
   },
   {
-    "revision": "81642bb8199e18c87ba8",
-    "url": "/adoptopenjdk-browser/static/js/main.13fd7f3c.chunk.js"
+    "revision": "dabdea7f8319bcdb368c",
+    "url": "/adoptopenjdk-browser/static/js/main.7f63b94e.chunk.js"
   },
   {
     "revision": "7a294f7b7b9c0f3dcc8c",
