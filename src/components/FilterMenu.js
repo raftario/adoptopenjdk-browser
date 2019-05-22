@@ -12,8 +12,8 @@ import React from 'react'
 
 const useStyles = makeStyles(theme => ({
   nested: {
-    paddingLeft: theme.spacing(4),
-  },
+    paddingLeft: theme.spacing(4)
+  }
 }))
 
 function FilterMenu (props) {
@@ -30,43 +30,43 @@ function FilterMenu (props) {
         <ListItemIcon>
           {props.collapseIcon}
         </ListItemIcon>
-        <ListItemText primary={props.collapseTitle}/>
-        {open ? <ExpandLess/> : <ExpandMore/>}
+        <ListItemText primary={props.collapseTitle} />
+        {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem key="any" dense button onClick={e => {
+      <Collapse in={open} timeout='auto' unmountOnExit>
+        <List component='div' disablePadding>
+          <ListItem key='any' dense button onClick={e => {
             e.stopPropagation()
             props.handleFilters('any', props.filterId)
           }} className={classes.nested}>
             <ListItemIcon>
               <Checkbox
-                edge="start"
+                edge='start'
                 checked={props.filters[props.filterId].indexOf('any') !== -1}
                 tabIndex={-1}
                 disableRipple
               />
             </ListItemIcon>
-            <ListItemText primary="Any"/>
+            <ListItemText primary='Any' />
           </ListItem>
           {props.filterItems.map(val =>
             <ListItem key={val.toLowerCase()}
-                      dense
-                      button
-                      onClick={e => {
-                        e.stopPropagation()
-                        props.handleFilters(val.toLowerCase(), props.filterId)
-                      }}
-                      className={classes.nested}>
+              dense
+              button
+              onClick={e => {
+                e.stopPropagation()
+                props.handleFilters(val.toLowerCase(), props.filterId)
+              }}
+              className={classes.nested}>
               <ListItemIcon>
                 <Checkbox
-                  edge="start"
+                  edge='start'
                   checked={props.filters[props.filterId].indexOf(val.toLowerCase()) !== -1}
                   tabIndex={-1}
                   disableRipple
                 />
               </ListItemIcon>
-              <ListItemText primary={val}/>
+              <ListItemText primary={val} />
             </ListItem>
           )}
         </List>

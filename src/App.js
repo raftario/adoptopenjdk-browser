@@ -61,7 +61,7 @@ class App extends React.Component {
     const applyFilter = (f, u) => {
       return this.state.filters[f][0] === 'any' || f === 'version'
         ? u
-        : u + f + '=' + this.state.filters[f][0] + '&'
+        : u + this.state.filters[f].map(v => f + '=' + v + '&').join('')
     }
 
     let i = 0
@@ -70,6 +70,8 @@ class App extends React.Component {
     urls.forEach((u, index) => {
       Object.keys(this.state.filters).forEach(f => {u = applyFilter(f, u)})
       urls[index] = u
+
+      console.log(u)
 
       if (
         (this.state.urls.indexOf(u) === -1 && nextState.urls.indexOf(u) === -1) ||

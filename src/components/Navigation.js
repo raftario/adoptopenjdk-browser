@@ -29,45 +29,45 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
-      flexShrink: 0,
-    },
+      flexShrink: 0
+    }
   },
   appBar: {
     marginLeft: drawerWidth,
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
+      width: `calc(100% - ${drawerWidth}px)`
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
+      display: 'none'
+    }
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   title: {
     flexGrow: 1,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+      display: 'block'
+    }
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -76,10 +76,10 @@ const useStyles = makeStyles(theme => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'inherit'
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
@@ -88,9 +88,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 120,
       '&:focus': {
-        width: 200,
-      },
-    },
+        width: 200
+      }
+    }
   }
 }))
 
@@ -106,57 +106,57 @@ function Navigation (props) {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar}/>
-      <Divider/>
+      <div className={classes.toolbar} />
+      <Divider />
       <List>
-        <FilterMenu collapseTitle="Version"
-                    collapseIcon={<VersionIcon/>}
-                    filterItems={['OpenJDK 8 (LTS)', 'OpenJDK 9', 'OpenJDK 10', 'OpenJDK 11 (LTS)', 'OpenJDK 12 (Latest)']}
-                    filters={props.filters}
-                    filterId={'version'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='Version'
+          collapseIcon={<VersionIcon />}
+          filterItems={['OpenJDK 8 (LTS)', 'OpenJDK 9', 'OpenJDK 10', 'OpenJDK 11 (LTS)', 'OpenJDK 12 (Latest)']}
+          filters={props.filters}
+          filterId={'version'}
+          handleFilters={props.handleFilters}
         />
-        <FilterMenu collapseTitle="OS"
-                    collapseIcon={<OSIcon/>}
-                    filterItems={['Windows', 'Linux', 'Mac', 'AIX', 'Solaris']}
-                    filters={props.filters}
-                    filterId={'os'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='OS'
+          collapseIcon={<OSIcon />}
+          filterItems={['Windows', 'Linux', 'Mac', 'AIX', 'Solaris']}
+          filters={props.filters}
+          filterId={'os'}
+          handleFilters={props.handleFilters}
         />
-        <FilterMenu collapseTitle="Architecture"
-                    collapseIcon={<ArchIcon/>}
-                    filterItems={['x64', 'x32', 'ppc64', 's390x', 'ppc64le', 'aarch64', 'sparcv9']}
-                    filters={props.filters}
-                    filterId={'arch'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='Architecture'
+          collapseIcon={<ArchIcon />}
+          filterItems={['x64', 'x32', 'ppc64', 's390x', 'ppc64le', 'aarch64', 'sparcv9']}
+          filters={props.filters}
+          filterId={'arch'}
+          handleFilters={props.handleFilters}
         />
-        <FilterMenu collapseTitle="Binary Type"
-                    collapseIcon={<TypeIcon/>}
-                    filterItems={['JDK', 'JRE']}
-                    filters={props.filters}
-                    filterId={'type'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='Binary Type'
+          collapseIcon={<TypeIcon />}
+          filterItems={['JDK', 'JRE']}
+          filters={props.filters}
+          filterId={'type'}
+          handleFilters={props.handleFilters}
         />
-        <FilterMenu collapseTitle="OpenJDK Implementation"
-                    collapseIcon={<ImplIcon/>}
-                    filterItems={['HotSpot', 'OpenJ9']}
-                    filters={props.filters}
-                    filterId={'openjdk_impl'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='OpenJDK Implementation'
+          collapseIcon={<ImplIcon />}
+          filterItems={['HotSpot', 'OpenJ9']}
+          filters={props.filters}
+          filterId={'openjdk_impl'}
+          handleFilters={props.handleFilters}
         />
-        <FilterMenu collapseTitle="Heap Size"
-                    collapseIcon={<HSIcon/>}
-                    filterItems={['Normal', 'Large']}
-                    filters={props.filters}
-                    filterId={'heap_size'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='Heap Size'
+          collapseIcon={<HSIcon />}
+          filterItems={['Normal', 'Large']}
+          filters={props.filters}
+          filterId={'heap_size'}
+          handleFilters={props.handleFilters}
         />
-        <FilterMenu collapseTitle="Release"
-                    collapseIcon={<ReleaseIcon/>}
-                    filterItems={['Latest']}
-                    filters={props.filters}
-                    filterId={'release'}
-                    handleFilters={props.handleFilters}
+        <FilterMenu collapseTitle='Release'
+          collapseIcon={<ReleaseIcon />}
+          filterItems={['Latest']}
+          filters={props.filters}
+          filterId={'release'}
+          handleFilters={props.handleFilters}
         />
       </List>
     </div>
@@ -164,27 +164,27 @@ function Navigation (props) {
 
   return (
     <>
-      <CssBaseline/>
-      <AppBar position="fixed" className={classes.appBar}>
+      <CssBaseline />
+      <AppBar position='fixed' className={classes.appBar}>
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            edge="start"
+            color='inherit'
+            aria-label='Open drawer'
+            edge='start'
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant='h6' noWrap>
             AdoptOpenJDK
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon/>
+              <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder='Search…'
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -196,10 +196,10 @@ function Navigation (props) {
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer}>
-        <Hidden smUp implementation="css">
+        <Hidden smUp implementation='css'>
           <Drawer
             container={container}
-            variant="temporary"
+            variant='temporary'
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
             onClose={handleDrawerToggle}
@@ -213,12 +213,12 @@ function Navigation (props) {
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden xsDown implementation='css'>
           <Drawer
             classes={{
               paper: classes.drawerPaper
             }}
-            variant="permanent"
+            variant='permanent'
             open
           >
             {drawer}
