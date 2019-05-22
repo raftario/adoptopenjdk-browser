@@ -1,6 +1,7 @@
 import React from 'react'
 import Navigation from './components/Navigation'
 import Table from './components/Table'
+import 'whatwg-fetch'
 
 class App extends React.Component {
   constructor (props) {
@@ -75,7 +76,7 @@ class App extends React.Component {
         (this.state.urls.indexOf(u) === -1 && nextState.urls.indexOf(u) === -1) ||
         (this.state.urls.length !== urls.length && nextState.urls.length !== urls.length)
       ) {
-        fetch(u)
+        window.fetch(u)
           .then(res => res.json())
           .then(json => {
             if (!Array.isArray(json)) json = [json]
