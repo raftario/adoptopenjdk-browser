@@ -71,8 +71,6 @@ class App extends React.Component {
       Object.keys(this.state.filters).forEach(f => {u = applyFilter(f, u)})
       urls[index] = u
 
-      console.log(u)
-
       if (
         (this.state.urls.indexOf(u) === -1 && nextState.urls.indexOf(u) === -1) ||
         (this.state.urls.length !== urls.length && nextState.urls.length !== urls.length)
