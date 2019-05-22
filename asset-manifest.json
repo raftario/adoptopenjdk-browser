@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/adoptopenjdk-browser/static/js/main.7f63b94e.chunk.js",
-    "main.js.map": "/adoptopenjdk-browser/static/js/main.7f63b94e.chunk.js.map",
+    "main.js": "/adoptopenjdk-browser/static/js/main.36a8084d.chunk.js",
+    "main.js.map": "/adoptopenjdk-browser/static/js/main.36a8084d.chunk.js.map",
     "runtime~main.js": "/adoptopenjdk-browser/static/js/runtime~main.1f5200f7.js",
     "runtime~main.js.map": "/adoptopenjdk-browser/static/js/runtime~main.1f5200f7.js.map",
-    "static/js/2.d2a134d2.chunk.js": "/adoptopenjdk-browser/static/js/2.d2a134d2.chunk.js",
-    "static/js/2.d2a134d2.chunk.js.map": "/adoptopenjdk-browser/static/js/2.d2a134d2.chunk.js.map",
+    "static/js/2.ede56cdb.chunk.js": "/adoptopenjdk-browser/static/js/2.ede56cdb.chunk.js",
+    "static/js/2.ede56cdb.chunk.js.map": "/adoptopenjdk-browser/static/js/2.ede56cdb.chunk.js.map",
     "index.html": "/adoptopenjdk-browser/index.html",
-    "precache-manifest.b224269928765dc44f879114d599575d.js": "/adoptopenjdk-browser/precache-manifest.b224269928765dc44f879114d599575d.js",
+    "precache-manifest.ad6ef41540bfe35638901ab7754d75f6.js": "/adoptopenjdk-browser/precache-manifest.ad6ef41540bfe35638901ab7754d75f6.js",
     "service-worker.js": "/adoptopenjdk-browser/service-worker.js"
   }
 }
